@@ -1,0 +1,19 @@
+KENBAKlite
+This is a Kenbakuino 
+* MINUS: 12 LEDs, 15 switches and associated wiring but
+* PLUS: a touch-screen LCD.
+It's an experiment in greatly simplifying the hardware required to approximate the retro-computer "look and feel."
+
+A touch-capable 320x240 TFT LCD shield is added to a Uno and the sketch modified so the LEDs and buttons are
+drawn as part of a facsimile of the KENBAK front panel.
+The LED states are shown on the screen. 
+Interaction with the buttons/switches is by touching them on the screen.
+
+The Kenbakuino used key-chords (pressing two buttons) to perform extended actions like loading a built-in program.
+The Lite version achieves the same effect by letting a button be locked down by pressing and holding it. 
+Pressing another button creates the chord and releases the lock (except for single stepping, pressing STRT with STOP locked)
+
+The functionality of startup chords (to set a program to auto-run etc) is accessed via menus under a hamburger button at the 
+top-left of the screen.
+
+The menu system also provides access to pages of (terse) information about chords, opcodes etc.
