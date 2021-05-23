@@ -187,17 +187,26 @@ bool CPU::Execute(byte Instruction)
 
     if (Left) // left
     {
-      byte Rot = *pValue & 0x80;  // grab that bit
-      *pValue <<= Places;         // shift
-      if (Rotate && Rot)          // or-in the bit that rolled off
-        *pValue |= 0x01;
+      for (int n = 0; n < Places; n++)
+      {
+        byte Rot = *pValue & 0x80;  // grab that bit
+        *pValue <<= 1;              // shift
+        if (Rotate && Rot)          // or-in the bit that rolled off
+          *pValue |= 0x01;
+      }
     }
     else  // right
     {
-      byte Rot = *pValue & 0x01;  // grab that bit
-      *pValue >>= Places;         // shift
-      if (Rotate && Rot)          // or-in the bit that rolled off
-        *pValue |= 0x80;
+      for (int n = 0; n < Places; n++)
+      {
+        byte Rot = *pValue & 0x01;  // grab that bit
+        byte Sgn = *pValue & 0x80;  // grab the "sign"
+        *pValue >>= 1;              // shift
+        if (Rotate && Rot)          // or-in the bit that rolled off
+          *pValue |= 0x80;
+        if (!Rotate && Sgn)
+          *pValue |= 0x80;          // or-in the sign
+      }
     }
   }
   else if (__R == 2)  // ==================== Bit Test and Manipulation
