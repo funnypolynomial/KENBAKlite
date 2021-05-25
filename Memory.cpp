@@ -29,7 +29,8 @@ prog_uchar programCounter[]  PROGMEM = {
 };
 
 prog_uchar programCylon[]  PROGMEM = {
-    0000, 0000, 0000, 0004, 0023, 0001, 0034, 0200, 0211, 0034, 0200, 0372, 0200, 0343, 0010, 0011, 0034, 0200, 0202, 0200, 0343, 0010, 0343, 0017
+    0000,0000,0000,0004,0023,0001,0034,0200,0211,0034,0200,0372,0200,0343,0010,0011,
+    0323,0177,0034,0200,0202,0200,0343,0010,0343,0017 // Note: 0011,0323,0177 is shift-right, AND 0177 to clear shift's sign extension
 };
 
 
@@ -58,7 +59,7 @@ bool Memory::LoadStandardProgram(byte Index)
   }
   else if (Index == 1)
   {
-    memcpy_P(pMem, programCylon, 24);
+    memcpy_P(pMem, programCylon, 26);
   }
   else if (Index == 2)
   {
